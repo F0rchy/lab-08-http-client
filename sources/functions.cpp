@@ -29,11 +29,11 @@ void making_request(int argc, char** argv) {
       "\"input\": \"" +
       content + "\"}";
   http::request<http::string_body> req{http::verb::post, target, version};
-  req.set(http : field::host, host);
+  req.set(http::field::host, host);
   req.set("user_name", user_name);
   req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
   req.body() = body;
-  req.prepare_payloda();
+  req.prepare_payload();
   http::write(socket, req);
 
   beast::flat_buffer buffer;
